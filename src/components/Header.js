@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 
 const Header = () => {
-    return (
-        <Wrapper >
-        <p>To-Do List</p>
-        </Wrapper>
-    )
+  return (
+    <Wrapper >
+      <p>To-Do List</p>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`
-  height: 6rem;
+  height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #50c878;
+  background-color: #009000;
   
    p {
-    font-size: 25px;
+    font-size: 30px;
     color: white;
-    font-weight: 500;
+    font-weight: 600;
    }
 `
 
