@@ -1,38 +1,9 @@
-import styled from 'styled-components';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
 import { WrapperAdd } from '../styles/WrapperList';
 
-const AddTask = ({ setList, list }) => {
-  const [formValue, setFormValue] = useState('')
-
-  const addTask = () => {
-    if(formValue) {
-      setList([
-        ...list, {
-          id: Date.now(),
-          title: formValue,
-          complited: false,
-        }
-      ])
-      setFormValue('')
-    }
-  }
-
-  const addTaskKey = (e) => {
-    if (e.key == 'Enter' && formValue) {
-      setList([
-        ...list, {
-          id: Date.now(),
-          title: formValue,
-          complited: false,
-        }
-      ])
-      setFormValue('')
-    }
-  }
+const AddTask = ({  addTask, addTaskKey, formValue, setFormValue }) => {
 
   return (
     <WrapperAdd >

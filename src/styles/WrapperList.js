@@ -114,16 +114,27 @@ export const WrapperAdd = styled.div`
   }
 `
 export const Container = styled.div`
-   overflow-y: scroll;
+   overflow-y: auto;
    height: 450px;
    width: 100%;
    display: flex;
    flex-direction: column;
    align-items: center;
 
-  ::-webkit-scrollbar {
-  display: none;
-    }
+ ::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,1);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:#fff;
+   -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
+}
     `
 
 export const ButtonContainer = styled.div`

@@ -1,29 +1,44 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import Header from './components/Header';
-import AddTask from './components/AddTask';
+import AddTask from './components/TaskInput';
 import TaskList from './components/TaskList';
 import { MainContainer } from './styles/MainContainer';
+import { useGlobalContext } from './context/toDoContext';
 
 function App() {
-
-	const [list, setList] = useState(() => {
-		const storageItem = localStorage.getItem('my-to-do-list');
-		const parsedItem = JSON.parse(storageItem);
-		return parsedItem || [];
-	});
-
-	useEffect(() => {
-		localStorage.setItem('my-to-do-list', JSON.stringify(list));
-	}, [list]);
-
+	const { list,
+		addTask,
+		addTaskKey,
+		formValue,
+		setFormValue,
+		editList,
+		editValue,
+		setEditValue,
+		changeStatus,
+		deleteItem,
+		editItem,
+		savedItem,
+    } = useGlobalContext();
 
 	return (
 		<>
 			<Header />
 			<MainContainer>
-				<AddTask list={list} setList={setList} />
-				{list.length ? <TaskList list={list} setList={setList} /> :
+				<AddTask
+					addTask={addTask}
+					addTaskKey={addTaskKey}
+					formValue={formValue}
+					setFormValue={setFormValue}
+				/>
+				{list.length ? <TaskList 
+				 list={list}
+				 editList={editList}
+				 editValue={editValue}
+				 setEditValue={setEditValue}
+				 changeStatus={changeStatus}
+				 deleteItem={deleteItem}
+				 editItem={editItem}
+				 savedItem={savedItem}
+				 /> :
 					<p className='first-task'>Please add you first <span>to-Do</span> task!</p>}
 			</MainContainer>
 		</>

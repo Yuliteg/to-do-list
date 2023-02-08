@@ -8,54 +8,28 @@ import Button from 'react-bootstrap/Button';
 import { WrapperList, Container, ButtonContainer } from '../styles/WrapperList';
 
 
-const TaskList = ({ list, setList }) => {
-    const [editList, setEditList] = useState(false);
-    const [editValue, setEditValue] = useState('');
+const TaskList = ({ list,
+    editValue,
+    setEditValue,
+    editList,
+    changeStatus,
+    deleteItem,
+    editItem,
+    saveList }) => {
     const [newFilteredList, setNewFilteredList] = useState(list);
 
-    useEffect(() => {
-        setNewFilteredList(list)
-    }, [list])
-
-    const deleteItem = (id) => {
-        const newList = [...list].filter(el => el.id != id);
-        setList(newList);
-    }
-
-    const changeStatus = (id) => {
-        const newList = [...list].filter(el => {
-            if (el.id == id) {
-                el.complited = !el.complited;
-            }
-            return el;
-        })
-        setList(newList);
-    }
-
-    const editItem = (id, title) => {
-        setEditList(id);
-        setEditValue(title);
-    }
-
-    const saveList = (id) => {
-        let newList = [...list].map(el => {
-            if (el.id == id) {
-                el.title = editValue;
-            }
-            return el;
-        })
-        setList(newList);
-        setEditList(null);
-    }
-
     const filterList = (value) => {
-        if (value == 'all') {
+        if (value === 'all') {
             setNewFilteredList(list);
         } else {
             let newList = [...list].filter(el => el.complited === value);
             setNewFilteredList(newList);
         }
     }
+
+    useEffect(() => {
+        setNewFilteredList(list)
+    }, [list])
 
     return (
         <>
@@ -79,7 +53,7 @@ const TaskList = ({ list, setList }) => {
             <Container>
                 {newFilteredList.map(el => (
                     <WrapperList key={el.id}>
-                        {editList == el.id ?
+                        {editList === el.id ?
                             <>
                                 <div className='container'>
                                     <InputGroup className="mb-3">
