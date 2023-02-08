@@ -16,7 +16,7 @@ function App() {
 		changeStatus,
 		deleteItem,
 		editItem,
-		savedItem,
+		saveList,
     } = useGlobalContext();
 
 	return (
@@ -37,7 +37,7 @@ function App() {
 				 changeStatus={changeStatus}
 				 deleteItem={deleteItem}
 				 editItem={editItem}
-				 savedItem={savedItem}
+				 saveList={saveList}
 				 /> :
 					<p className='first-task'>Please add you first <span>to-Do</span> task!</p>}
 			</MainContainer>
