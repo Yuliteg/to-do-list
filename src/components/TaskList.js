@@ -15,6 +15,7 @@ const TaskList = ({ list, setList }) => {
         const newList = [...list].filter(el => el.id != id);
         setList(newList);
     }
+
     const changeStatus = (id) => {
         const newList = [...list].filter(el => {
             if (el.id == id) {
@@ -24,20 +25,21 @@ const TaskList = ({ list, setList }) => {
         })
         setList(newList);
     }
+
     const editItem = (id, title) => {
         setEditList(id);
         setEditValue(title);
     }
 
     const saveList = (id) => {
-       let newList = [...list].map(el => {
-        if(el.id == id) {
-            el.title = editValue;
-        }
-        return el;
-       })
-       setList(newList);
-       setEditList(null);
+        let newList = [...list].map(el => {
+            if (el.id == id) {
+                el.title = editValue;
+            }
+            return el;
+        })
+        setList(newList);
+        setEditList(null);
     }
 
     return (
@@ -56,11 +58,10 @@ const TaskList = ({ list, setList }) => {
                                     />
                                 </InputGroup>
                                 <AiFillCheckCircle
-                                 className='done-icon'
-                                 onClick={() => saveList(el.id)}
-                                 />
+                                    className='done-icon'
+                                    onClick={() => saveList(el.id)}
+                                />
                             </div>
-
                         </>
                         :
                         <>
@@ -68,6 +69,7 @@ const TaskList = ({ list, setList }) => {
                                 className={el.complited ? 'checkbox-complited shadow-none' : 'checkbox shadow-none'}
                                 type="checkbox"
                                 label={el.title}
+                                checked={el.complited}
                                 onChange={() => changeStatus(el.id)}
                             />
                             <div className="icon-container">
@@ -99,8 +101,8 @@ const Container = styled.div`
 
     ::-webkit-scrollbar {
     display: none;
-}
-            `
+    }
+    `
 
 const Wrapper = styled.div`
      width: 70%;
@@ -113,16 +115,29 @@ const Wrapper = styled.div`
      border-radius: 0.375rem;
   
    .checkbox {
-    margin - top: 1rem;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    
+    .form-check-label {
+        font-size: 18px;
+     }
+     .form-check-input {
+        font-size: 20px;
+     }
      .form-check-input:focus {
          box-shadow: none;
      }
    }
 
     .checkbox-complited {
-        margin - top: 1rem;
+        margin-top: 0.2rem;
+        margin-left: 0.3rem;
     .form-check-label {
         text-decoration: line-through;
+        font-size: 18px;
+     }
+     .form-check-input {
+        font-size: 20px;
      }
     .form-check-input:focus {
         box-shadow: none;

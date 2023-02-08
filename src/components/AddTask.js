@@ -18,6 +18,19 @@ const AddTask = ({ setList, list }) => {
     setFormValue('')
   }
 
+  const addTaskKey = (e) => {
+    if (e.key == 'Enter') {
+      setList([
+        ...list, {
+          id: Date.now(),
+          title: formValue,
+          complited: false,
+        }
+      ])
+      setFormValue('')
+    }
+  }
+
   return (
     <Wrapper >
       <InputGroup className="mb-3">
@@ -26,6 +39,7 @@ const AddTask = ({ setList, list }) => {
           className='shadow-none'
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
+          onKeyUp={addTaskKey}
         />
         <Button
           variant="success"
@@ -35,6 +49,13 @@ const AddTask = ({ setList, list }) => {
           Add
         </Button>
       </InputGroup>
+      {/* {list.length ? <div className="button-container">
+        <Button variant='dark'>All</Button>
+        <Button variant='success'>Open</Button>
+        <Button variant='warning'>Complited</Button>
+      </div> : <></>
+      } */}
+
     </Wrapper>
   )
 }
@@ -46,6 +67,16 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 3.2px;
+    .btn-warning {
+      color: white;
+    }
+  }
 `
 
 export default AddTask;
