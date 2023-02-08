@@ -3,23 +3,26 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
+import { WrapperAdd } from '../styles/WrapperList';
 
 const AddTask = ({ setList, list }) => {
   const [formValue, setFormValue] = useState('')
 
   const addTask = () => {
-    setList([
-      ...list, {
-        id: Date.now(),
-        title: formValue,
-        complited: false,
-      }
-    ])
-    setFormValue('')
+    if(formValue) {
+      setList([
+        ...list, {
+          id: Date.now(),
+          title: formValue,
+          complited: false,
+        }
+      ])
+      setFormValue('')
+    }
   }
 
   const addTaskKey = (e) => {
-    if (e.key == 'Enter') {
+    if (e.key == 'Enter' && formValue) {
       setList([
         ...list, {
           id: Date.now(),
@@ -32,7 +35,7 @@ const AddTask = ({ setList, list }) => {
   }
 
   return (
-    <Wrapper >
+    <WrapperAdd >
       <InputGroup className="mb-3">
         <Form.Control
           placeholder="Add your new task"
@@ -49,34 +52,9 @@ const AddTask = ({ setList, list }) => {
           Add
         </Button>
       </InputGroup>
-      {/* {list.length ? <div className="button-container">
-        <Button variant='dark'>All</Button>
-        <Button variant='success'>Open</Button>
-        <Button variant='warning'>Complited</Button>
-      </div> : <></>
-      } */}
-
-    </Wrapper>
+    </WrapperAdd>
   )
 }
 
-const Wrapper = styled.div`
-  margin-bottom: 1rem;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .button-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    gap: 3.2px;
-    .btn-warning {
-      color: white;
-    }
-  }
-`
 
 export default AddTask;
