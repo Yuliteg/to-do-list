@@ -13,30 +13,22 @@ function App() {
     },
     {
       id: 2,
-      title: 'first task',
+      title: 'second task',
       complited: false,
     },
     {
       id: 3,
-      title: 'first task',
+      title: 'third task',
       complited: false,
     }
   ])
-
+  console.log(list)
   return (
     <>
       <Header />
       <Container>
-        <AddTask />
-        {list.map((el) => {
-          return (
-            <TaskList
-              key={el.id}
-              title={el.title}
-              complited={el.complited} />
-          )
-        })}
-
+        <AddTask list={list} setList={setList}/>
+				<TaskList list={list} setList={setList}/>
       </Container>
     </>
   );
