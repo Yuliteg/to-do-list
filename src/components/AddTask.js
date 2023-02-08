@@ -40,12 +40,12 @@ const AddTask = ({ setList, list }) => {
 }
 
 const Wrapper = styled.div`
+  margin-bottom: 1rem;
   width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 `
 
 export default AddTask;
