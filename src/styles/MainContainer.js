@@ -11,6 +11,7 @@ export const MainContainer = styled.div`
 
 	.first-task {
 		margin-top: 2.5rem;
+    margin-left: 2.2%;
 		color: #4C4E52;
 		font-size: 35px;
 		font-weight: 500;

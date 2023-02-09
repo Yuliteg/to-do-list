@@ -109,6 +109,15 @@ export const WrapperAdd = styled.div`
   justify-content: center;
   align-items: center;
 
+   .input-group {
+    .form-control {
+      font-size: 1.3rem;
+     }
+    @media (max-width: 400px) {
+    height: 3.3rem;
+  }
+   }
+
   @media (max-width: 400px) {
     width: 92%;
   }
