@@ -30,13 +30,15 @@ export const WrapperList = styled.div`
     box-shadow: none;
      }
    }
-
+   textarea {
+    font-size: 18px;
+   }
   .checkbox-complited {
      margin-top: 0.2rem;
      margin-left: 0.3rem;
   .form-check-label {
      text-decoration: line-through;
-     font-size: 18px;
+     font-size: 20px;
      }
   .form-check-input {
     font-size: 20px;
